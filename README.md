@@ -2,13 +2,13 @@
 
 ## 使い方
 ### Apexテスト指定なし
-`sfdep.ps1 -from pa-ewdev -to pa-product`
+`sfdep.ps1 -from dev -to product`
 ### Apexテストを指定
-`sfdep.ps1 -from pa-ewdev -to pa-product -tests SomeTest`
+`sfdep.ps1 -from dev -to product -tests SomeTest`
 ### Apexテストを複数指定
-`sfdep.ps1 -from pa-ewdev -to pa-product -tests SomeTest1,SomeTest2`
+`sfdep.ps1 -from dev -to product -tests SomeTest1,SomeTest2`
 ### package.xmlを指定
-`sfdep.ps1 -from pa-ewdev -to pa-product -p C:\release\YYYYMMDD\NNN\package.xml`  
+`sfdep.ps1 -from dev -to product -p C:\release\YYYYMMDD\NNN\package.xml`  
 __注意__ `-p` オプションを使用しない時は `sfdep.ps1` と同じディレクトリに `package.xml` が必要です
 
 ## 前提条件
@@ -23,7 +23,7 @@ __注意__ `-p` オプションを使用しない時は `sfdep.ps1` と同じデ
 ### Salesforce CLIで認証 の方法
 #### 具体例(本番)
 
-`sfdx force:auth:web:login --setalias pa-product --instanceurl https://login.salesforce.com`
+`sfdx force:auth:web:login --setalias product --instanceurl https://login.salesforce.com`
 
 ##### 説明
 コマンドを実行するとSalesforceログイン画面がWebブラウザで開くのでログインしてOAuthを行う
@@ -32,16 +32,16 @@ __注意__ `-p` オプションを使用しない時は `sfdep.ps1` と同じデ
 > Successfully authorized xxxx@xxxxx.xxxx with org ID XXXXXXXXXXXXXX
 > You may now close the browser
 
-`--setalias pa-product` で接続先の名前を設定しているこの設定値、この例だと`pa-product`は`sfdep.ps1`の`-to`パラメータの引数として渡します  
+`--setalias product` で接続先の名前を設定しているこの設定値、この例だと`product`は`sfdep.ps1`の`-to`パラメータの引数として渡します  
 本番環境の時は`--instanceurl https://login.salesforce.com`です。  
 ドメインが切られている時はそのドメインにしないといけません。
 
 #### 具体例(Sandbox)
 
-`sfdx force:auth:web:login --setalias pa-ewdev --instanceurl https://test.salesforce.com`
+`sfdx force:auth:web:login --setalias dev --instanceurl https://test.salesforce.com`
 
 ##### 説明
-この例だと`pa-ewdev`は`sfdep.ps1`の`-from`パラメータの引数として渡します  
+この例だと`dev`は`sfdep.ps1`の`-from`パラメータの引数として渡します  
 Sandboxの時は`--instanceurl https://test.salesforce.com`です。
 
 ## 実行時に生成されるファイル
